@@ -20,6 +20,10 @@ describe('ensure-type', () => {
     expect(ensureArray(null)).toEqual([]);
     expect(ensureArray('')).toEqual(['']);
     expect(ensureArray(' ')).toEqual([' ']);
+
+    // default value
+    expect(ensureArray(null, 0)).toEqual([0]);
+    expect(ensureArray(null, [0])).toEqual([0]);
   });
 
   test('ensureBoolean', () => {
@@ -40,6 +44,11 @@ describe('ensure-type', () => {
     expect(ensureBoolean('')).toEqual(false);
     expect(ensureBoolean(' ')).toEqual(true);
     expect(ensureBoolean('one')).toEqual(true);
+
+    // default value
+    expect(ensureBoolean(null, true)).toEqual(true);
+    expect(ensureBoolean(null, '')).toEqual(false);
+    expect(ensureBoolean(null, ' ')).toEqual(true);
   });
 
   test('ensureNumber', () => {
@@ -60,6 +69,10 @@ describe('ensure-type', () => {
     expect(ensureNumber('')).toEqual(0);
     expect(ensureNumber(' ')).toEqual(0);
     expect(Number.isNaN(ensureNumber('one'))).toEqual(true);
+
+    // default value
+    expect(ensureNumber(null, NaN)).toEqual(NaN);
+    expect(ensureNumber(null, 1)).toEqual(1);
   });
 
   test('ensureFiniteNumber', () => {
@@ -80,6 +93,10 @@ describe('ensure-type', () => {
     expect(ensureFiniteNumber('')).toEqual(0);
     expect(ensureFiniteNumber(' ')).toEqual(0);
     expect(ensureFiniteNumber('one')).toEqual(0);
+
+    // default value
+    expect(ensureFiniteNumber(null, NaN)).toEqual(0);
+    expect(ensureFiniteNumber(null, 1)).toEqual(1);
   });
 
   test('ensurePlainObject', () => {
@@ -99,6 +116,10 @@ describe('ensure-type', () => {
     expect(ensurePlainObject('')).toEqual({});
     expect(ensurePlainObject(' ')).toEqual({});
     expect(ensurePlainObject('one')).toEqual({});
+
+    // default value
+    expect(ensurePlainObject(null, null)).toEqual({});
+    expect(ensurePlainObject(null, { name: 'value' })).toEqual({ name: 'value' });
   });
 
   test('ensureString', () => {
@@ -117,5 +138,9 @@ describe('ensure-type', () => {
     expect(ensureString('')).toEqual('');
     expect(ensureString(' ')).toEqual(' ');
     expect(ensureString('one')).toEqual('one');
+
+    // default value
+    expect(ensureString(null, false)).toEqual('false');
+    expect(ensureString(null, 'default')).toEqual('default');
   });
 });
