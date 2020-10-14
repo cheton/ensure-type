@@ -18,6 +18,8 @@ describe('ensure-type', () => {
     expect(ensureArray(NaN)).toEqual([NaN]);
     expect(ensureArray(undefined)).toEqual([]);
     expect(ensureArray(null)).toEqual([]);
+    expect(ensureArray('')).toEqual(['']);
+    expect(ensureArray(' ')).toEqual([' ']);
   });
 
   test('ensureBoolean', () => {
