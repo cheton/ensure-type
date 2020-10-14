@@ -9,7 +9,6 @@ const getBabelOptions = ({ useESModules }) => ({
   exclude: '**/node_modules/**',
   runtimeHelpers: true,
   plugins: [
-    ['@babel/plugin-transform-runtime', { useESModules }],
   ],
 });
 

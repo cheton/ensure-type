@@ -30,7 +30,6 @@
     "coercion"
   ],
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@trendmicro/babel-config": "^1.0.0-alpha",
