@@ -39,11 +39,11 @@ ensurePlainObject(1);
 ```js
 import { ensureArray } from 'ensure-type';
 
-ensureArray('foo');
-//=> ['foo']
+ensureArray('');
+//=> ['']
 
 ensureArray({});
-//=> []
+//=> [{}]
 ```
 
 ### ensureBoolean(value, defaultValue = false)
@@ -87,7 +87,7 @@ import { ensureFiniteNumber } from 'ensure-type';
 ensureFiniteNumber('10');
 //=> 10
 
-ensureFiniteNumber(null);
+ensureFiniteNumber(NaN);
 //=> 0
 ```
 
