@@ -40,7 +40,7 @@ const ensureNumber = (value, defaultValue = 0) => {
 };
 
 const ensureFiniteNumber = (value, defaultValue = 0) => {
-  value = ensureNumber(value);
+  value = ensureNumber(value, defaultValue);
 
   return Number.isFinite(value) ? value : ensureFiniteNumber(defaultValue);
 };
