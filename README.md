@@ -1,4 +1,4 @@
-# ensure-type [![build status](https://travis-ci.org/cheton/ensure-type.svg?branch=master)](https://travis-ci.org/cheton/ensure-type) [![Coverage Status](https://coveralls.io/repos/github/cheton/ensure-type/badge.svg?branch=master)](https://coveralls.io/github/cheton/ensure-type?branch=master)
+# ensure-type [![Build Status](https://travis-ci.com/cheton/ensure-type.svg?branch=master)](https://travis-ci.com/cheton/ensure-type) [![Coverage Status](https://coveralls.io/repos/github/cheton/ensure-type/badge.svg?branch=master)](https://coveralls.io/github/cheton/ensure-type?branch=master)
 
 [![NPM](https://nodei.co/npm/ensure-type.png?downloads=true&stars=true)](https://www.npmjs.com/package/ensure-type)
 
