@@ -1,14 +1,14 @@
-import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
+import pkg from './package.json';
 
 const isExternal = id => !id.startsWith('.') && !id.startsWith('/');
 
 export default [
   {
-    input: path.resolve(__dirname, 'src/index.js'),
+    input: 'src/index.js',
     output: {
-      file: path.resolve(__dirname, `dist/cjs/index.js`),
+      file: pkg.main,
       format: 'cjs',
     },
     external: isExternal,
@@ -20,9 +20,9 @@ export default [
     ],
   },
   {
-    input: path.resolve(__dirname, 'src/index.js'),
+    input: 'src/index.js',
     output: {
-      file: path.resolve(__dirname, `dist/esm/index.js`),
+      file: pkg.module,
       format: 'esm',
     },
     external: isExternal,
