@@ -4,14 +4,6 @@ import babel from 'rollup-plugin-babel';
 
 const isExternal = id => !id.startsWith('.') && !id.startsWith('/');
 
-const getBabelOptions = ({ useESModules }) => ({
-  rootMode: 'upward',
-  exclude: '**/node_modules/**',
-  runtimeHelpers: true,
-  plugins: [
-  ],
-});
-
 export default [
   {
     input: path.resolve(__dirname, 'src/index.js'),
@@ -22,7 +14,9 @@ export default [
     external: isExternal,
     plugins: [
       resolve(),
-      babel(getBabelOptions({ useESModules: false })),
+      babel({
+        exclude: 'node_modules/**',
+      }),
     ],
   },
   {
@@ -34,7 +28,9 @@ export default [
     external: isExternal,
     plugins: [
       resolve(),
-      babel(getBabelOptions({ useESModules: true })),
+      babel({
+        exclude: 'node_modules/**',
+      }),
     ],
   }
 ];
