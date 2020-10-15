@@ -21,7 +21,7 @@ const ensureNegativeNumber = (value, defaultValue = 0) => {
 const ensurePositiveNumber = (value, defaultValue = 0) => {
   const positiveZero = +0;
 
-  return Math.max(ensureNumber(value, defaultValue), potisiveZero);
+  return Math.max(ensureNumber(value, defaultValue), positiveZero);
 };
 
 const ensureFiniteNumber = (value, defaultValue = 0) => {
