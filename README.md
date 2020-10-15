@@ -35,7 +35,11 @@ ensureArray(['apple', 'banana']);
 
 ### Number
 - [`ensureNumber`](docs/ensureNumber.md)
+- [`ensureNegativeNumber`](docs/ensureNegativeNumber.md)
+- [`ensurePositiveNumber`](docs/ensurePositiveNumber.md)
 - [`ensureFiniteNumber`](docs/ensureFiniteNumber.md)
+- [`ensureNegativeFiniteNumber`](docs/ensureNegativeFiniteNumber.md)
+- [`ensurePositiveFiniteNumber`](docs/ensurePositiveFiniteNumber.md)
 
 ### Object
 - [`ensurePlainObject`](docs/ensurePlainObject.md)
