@@ -10,7 +10,7 @@ ensureNumber();
 // => 0
 
 ensureNumber({});
-// => NaN
+// => 0
 
 ensureNumber(true);
 // => 1
