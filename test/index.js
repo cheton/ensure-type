@@ -21,8 +21,10 @@ describe('ensure-type', () => {
     expect(ensureArray('')).toEqual(['']);
     expect(ensureArray(' ')).toEqual([' ']);
 
-    // default value
+    // Returns the coerced default value.
     expect(ensureArray(null, 0)).toEqual([0]);
+
+    // Returns the default value.
     expect(ensureArray(null, [0])).toEqual([0]);
   });
 
@@ -43,12 +45,15 @@ describe('ensure-type', () => {
     expect(ensureBoolean('1')).toEqual(true);
     expect(ensureBoolean('')).toEqual(false);
     expect(ensureBoolean(' ')).toEqual(true);
-    expect(ensureBoolean('one')).toEqual(true);
 
-    // default value
-    expect(ensureBoolean(null, true)).toEqual(true);
+    // Returns the coerced default value.
     expect(ensureBoolean(null, '')).toEqual(false);
+
+    // Returns the coerced default value.
     expect(ensureBoolean(null, ' ')).toEqual(true);
+
+    // Returns the default value.
+    expect(ensureBoolean(null, true)).toEqual(true);
   });
 
   test('ensureNumber', () => {
@@ -70,9 +75,11 @@ describe('ensure-type', () => {
     expect(ensureNumber(' ')).toEqual(0);
     expect(Number.isNaN(ensureNumber('one'))).toEqual(true);
 
-    // default value
+    // Returns the coerced default value.
+    expect(ensureNumber(null, '1')).toEqual(1);
+
+    // Returns the default value.
     expect(ensureNumber(null, NaN)).toEqual(NaN);
-    expect(ensureNumber(null, 1)).toEqual(1);
   });
 
   test('ensureFiniteNumber', () => {
@@ -94,8 +101,10 @@ describe('ensure-type', () => {
     expect(ensureFiniteNumber(' ')).toEqual(0);
     expect(ensureFiniteNumber('one')).toEqual(0);
 
-    // default value
+    // Returns the coerced default value.
     expect(ensureFiniteNumber(null, NaN)).toEqual(0);
+
+    // Returns the default value.
     expect(ensureFiniteNumber(null, 1)).toEqual(1);
   });
 
@@ -117,8 +126,10 @@ describe('ensure-type', () => {
     expect(ensurePlainObject(' ')).toEqual({});
     expect(ensurePlainObject('one')).toEqual({});
 
-    // default value
+    // Returns the coerced default value.
     expect(ensurePlainObject(null, null)).toEqual({});
+
+    // Returns the default value.
     expect(ensurePlainObject(null, { name: 'value' })).toEqual({ name: 'value' });
   });
 
@@ -137,10 +148,11 @@ describe('ensure-type', () => {
     expect(ensureString(null)).toEqual('');
     expect(ensureString('')).toEqual('');
     expect(ensureString(' ')).toEqual(' ');
-    expect(ensureString('one')).toEqual('one');
 
-    // default value
+    // Returns the coerced default value.
     expect(ensureString(null, false)).toEqual('false');
+
+    // Returns the default value.
     expect(ensureString(null, 'default')).toEqual('default');
   });
 });
