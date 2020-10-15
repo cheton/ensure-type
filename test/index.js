@@ -7,7 +7,7 @@ import {
   ensureString,
 } from '../src';
 
-describe('ensure-type', () => {
+describe('Array', () => {
   test('ensureArray', () => {
     expect(ensureArray()).toEqual([]);
     expect(ensureArray({})).toEqual([{}]);
@@ -27,7 +27,9 @@ describe('ensure-type', () => {
     // Returns the default value.
     expect(ensureArray(null, [0])).toEqual([0]);
   });
+});
 
+describe('Boolean', () => {
   test('ensureBoolean', () => {
     expect(ensureBoolean()).toEqual(false);
     expect(ensureBoolean({})).toEqual(true);
@@ -55,7 +57,9 @@ describe('ensure-type', () => {
     // Returns the default value.
     expect(ensureBoolean(null, true)).toEqual(true);
   });
+});
 
+describe('Number', () => {
   test('ensureNumber', () => {
     expect(ensureNumber()).toEqual(0);
     expect(Number.isNaN(ensureNumber({}))).toEqual(true);
@@ -107,7 +111,9 @@ describe('ensure-type', () => {
     // Returns the default value.
     expect(ensureFiniteNumber(null, 1)).toEqual(1);
   });
+});
 
+describe('Object', () => {
   test('ensurePlainObject', () => {
     expect(ensurePlainObject()).toEqual({});
     expect(ensurePlainObject({})).toEqual(({}));
@@ -132,7 +138,9 @@ describe('ensure-type', () => {
     // Returns the default value.
     expect(ensurePlainObject(null, { name: 'value' })).toEqual({ name: 'value' });
   });
+});
 
+describe('String', () => {
   test('ensureString', () => {
     expect(ensureString()).toEqual('');
     expect(ensureString({})).toEqual('[object Object]');
