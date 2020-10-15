@@ -34,7 +34,7 @@ ensureNumber(-Infinity);
 // => -Infinity
 
 ensureNumber(NaN);
-// => NaN
+// => 0
 
 ensureNumber(undefined);
 // => 0
@@ -54,14 +54,11 @@ ensureNumber('');
 ensureNumber(' ');
 // => 0
 
-ensureNumber('one');
-// => NaN
-
 // Returns the coerced default value.
 ensureNumber(null, '1');
 // => 1
 
 // Returns the default value.
-ensureNumber(null, NaN);
-// => NaN
+ensureNumber(null, 1);
+// => 1
 ```

@@ -54,9 +54,6 @@ ensureFiniteNumber('');
 ensureFiniteNumber(' ');
 // => 0
 
-ensureFiniteNumber('one');
-// => 0
-
 // Returns the coerced default value.
 ensureFiniteNumber(null, NaN);
 // => 0
