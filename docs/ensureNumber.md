@@ -18,6 +18,9 @@ ensureNumber(true);
 ensureNumber(false);
 // => 0
 
+ensureNumber(-1);
+// => -1
+
 ensureNumber(0);
 // => 0
 
@@ -41,6 +44,9 @@ ensureNumber(undefined);
 
 ensureNumber(null);
 // => 0
+
+ensureNumber('-1');
+// => -1
 
 ensureNumber('0');
 // => 0

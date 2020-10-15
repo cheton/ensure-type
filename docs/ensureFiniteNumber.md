@@ -18,6 +18,9 @@ ensureFiniteNumber(true);
 ensureFiniteNumber(false);
 // => 0
 
+ensureFiniteNumber(-1);
+// => -1
+
 ensureFiniteNumber(0);
 // => 0
 
@@ -41,6 +44,9 @@ ensureFiniteNumber(undefined);
 
 ensureFiniteNumber(null);
 // => 0
+
+ensureFiniteNumber('-1');
+// => -1
 
 ensureFiniteNumber('0');
 // => 0
