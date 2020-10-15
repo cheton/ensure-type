@@ -62,7 +62,7 @@ describe('Boolean', () => {
 describe('Number', () => {
   test('ensureNumber', () => {
     expect(ensureNumber()).toEqual(0);
-    expect(Number.isNaN(ensureNumber({}))).toEqual(true);
+    expect(ensureNumber({})).toEqual(0);
     expect(ensureNumber(true)).toEqual(1);
     expect(ensureNumber(false)).toEqual(0);
     expect(ensureNumber(0)).toEqual(0);
@@ -70,20 +70,19 @@ describe('Number', () => {
     expect(ensureNumber(2e+64)).toEqual(2e+64);
     expect(ensureNumber(Infinity)).toEqual(Infinity);
     expect(ensureNumber(-Infinity)).toEqual(-Infinity);
-    expect(Number.isNaN(ensureNumber(NaN))).toEqual(true);
+    expect(ensureNumber(NaN)).toEqual(0);
     expect(ensureNumber(undefined)).toEqual(0);
     expect(ensureNumber(null)).toEqual(0);
     expect(ensureNumber('0')).toEqual(0);
     expect(ensureNumber('1')).toEqual(1);
     expect(ensureNumber('')).toEqual(0);
     expect(ensureNumber(' ')).toEqual(0);
-    expect(Number.isNaN(ensureNumber('one'))).toEqual(true);
 
     // Returns the coerced default value.
     expect(ensureNumber(null, '1')).toEqual(1);
 
     // Returns the default value.
-    expect(ensureNumber(null, NaN)).toEqual(NaN);
+    expect(ensureNumber(null, 1)).toEqual(1);
   });
 
   test('ensureFiniteNumber', () => {
@@ -103,7 +102,6 @@ describe('Number', () => {
     expect(ensureFiniteNumber('1')).toEqual(1);
     expect(ensureFiniteNumber('')).toEqual(0);
     expect(ensureFiniteNumber(' ')).toEqual(0);
-    expect(ensureFiniteNumber('one')).toEqual(0);
 
     // Returns the coerced default value.
     expect(ensureFiniteNumber(null, NaN)).toEqual(0);

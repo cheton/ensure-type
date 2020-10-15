@@ -33,10 +33,16 @@ const ensureBoolean = (value, defaultValue = false) => {
 
 const ensureNumber = (value, defaultValue = 0) => {
   if (value === undefined || value === null) {
-    return Number(defaultValue);
+    return ensureNumber(defaultValue);
   }
 
-  return (typeof value === 'number') ? value : Number(value); // number coercible value
+  value = Number(value);
+
+  if (Number.isNaN(value)) {
+    return ensureNumber(defaultValue);
+  }
+
+  return value;
 };
 
 const ensureFiniteNumber = (value, defaultValue = 0) => {
