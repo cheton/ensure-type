@@ -13,113 +13,35 @@ $ npm install --save ensure-type
 ## Usage
 
 ```js
-import {
-  ensureArray,
-  ensureBoolean,
-  ensurePlainObject,
-} from 'ensure-type';
+import { ensureArray } from 'ensure-type';
 
 ensureArray(null);
 //=> []
 
-ensureBoolean(0);
-//=> false
+ensureArray('apple');
+//=> ['apple']
 
-ensurePlainObject(1);
-//=> {}
+ensureArray(['apple', 'banana']);
+//=> ['apple', 'banana']
 ```
 
 ## API
 
-### ensureArray(value, defaultValue = [])
+### Array
+- [`ensureArray`](docs/ensureArray.md)
 
-* If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
-* If given `value` is an array, it is returned back. Otherwise, returns a new array containing the value.
+### Boolean
+- [`ensureBoolean`](docs/ensureBoolean.md)
 
-```js
-import { ensureArray } from 'ensure-type';
+### Number
+- [`ensureNumber`](docs/ensureNumber.md)
+- [`ensureFiniteNumber`](docs/ensureFiniteNumber.md)
 
-ensureArray('');
-//=> ['']
+### Object
+- [`ensurePlainObject`](docs/ensurePlainObject.md)
 
-ensureArray({});
-//=> [{}]
-```
-
-### ensureBoolean(value, defaultValue = false)
-
-* If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
-* If given `value` is a boolean, it is returned back. Otherwise, returns the coerced value.
-
-```js
-import { ensureBoolean } from 'ensure-type';
-
-ensureBoolean('1');
-//=> true
-
-ensureBoolean(null);
-//=> false
-```
-
-### ensureNumber(value, defaultValue = 0)
-
-* If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
-* If given `value` is a number, it is returned back. Otherwise, returns the coerced value.
-
-```js
-import { ensureNumber } from 'ensure-type';
-
-ensureNumber('10');
-//=> 10
-
-ensureNumber(null);
-//=> 0
-```
-
-### ensureFiniteNumber(value, defaultValue = 0)
-
-* If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
-* If given `value` is a finite number coercible value, the result number is returned. Otherwise, the `defaultValue` is returned with type coercion.
-
-```js
-import { ensureFiniteNumber } from 'ensure-type';
-
-ensureFiniteNumber('10');
-//=> 10
-
-ensureFiniteNumber(NaN);
-//=> 0
-```
-
-### ensurePlainObject(value, defaultValue = {})
-
-* If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
-* If given `value` is a plain object, it is returned back. Otherwise, the `defaultValue` is returned with type coercion.
-
-```js
-import { ensurePlainObject } from 'ensure-type';
-
-ensurePlainObject({});
-//=> {}
-
-ensurePlainObject('foo'); // 'foo' is not a plain object
-//=> {}
-```
-
-### ensureString(value, defaultValue = '')
-
-* If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
-* If given `value` is a string, it is returned back. Otherwise, returns the coerced value.
-
-```js
-import { ensureString } from 'ensure-type';
-
-ensureString(10);
-//=> '10'
-
-ensureString(null);
-//=> ''
-```
+### String
+- [`ensureString`](docs/ensureString.md)
 
 ## License
 
