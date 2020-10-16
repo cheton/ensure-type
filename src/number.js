@@ -37,6 +37,20 @@ const ensurePositiveFiniteNumber = (value, defaultValue = positiveZero) => {
   return Math.max(ensureFiniteNumber(value, defaultValue), positiveZero);
 };
 
+const ensureInteger = (value, defaultValue = positiveZero) => {
+  value = ensureFiniteNumber(value, defaultValue);
+
+  return (value > positiveZero) ? Math.floor(value) : Math.ceil(value);
+};
+
+const ensureNegativeInteger = (value, defaultValue = negativeZero) => {
+  return Math.min(ensureInteger(value, defaultValue), negativeZero);
+};
+
+const ensurePositiveInteger = (value, defaultValue = positiveZero) => {
+  return Math.max(ensureInteger(value, defaultValue), positiveZero);
+};
+
 export {
   ensureNumber,
   ensureNegativeNumber,
@@ -44,4 +58,7 @@ export {
   ensureFiniteNumber,
   ensureNegativeFiniteNumber,
   ensurePositiveFiniteNumber,
+  ensureInteger,
+  ensureNegativeInteger,
+  ensurePositiveInteger,
 };

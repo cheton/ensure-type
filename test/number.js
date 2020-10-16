@@ -5,6 +5,7 @@ import {
   ensureFiniteNumber,
   ensureNegativeFiniteNumber,
   ensurePositiveFiniteNumber,
+  ensureInteger,
 } from '../src';
 
 const negativeZero = -0;
@@ -170,5 +171,46 @@ describe('Number', () => {
 
     // Returns the default value.
     expect(ensurePositiveFiniteNumber(null, 1)).toEqual(1);
+  });
+
+  test('ensureInteger', () => {
+    expect(ensureInteger()).toEqual(0);
+    expect(ensureInteger(undefined)).toEqual(0);
+    expect(ensureInteger(null)).toEqual(0);
+    expect(ensureInteger({})).toEqual(0);
+    expect(ensureInteger([])).toEqual(0);
+    expect(ensureInteger(true)).toEqual(1);
+    expect(ensureInteger(false)).toEqual(0);
+    expect(ensureInteger(Infinity)).toEqual(0);
+    expect(ensureInteger(-Infinity)).toEqual(0);
+    expect(ensureInteger(NaN)).toEqual(0);
+
+    expect(ensureInteger(-1)).toEqual(-1);
+    expect(ensureInteger(0)).toEqual(0);
+    expect(ensureInteger(1)).toEqual(1);
+    expect(ensureInteger(99999999999999999999999)).toEqual(99999999999999999999999);
+    expect(ensureInteger(0.1)).toEqual(0);
+    expect(ensureInteger(-0.1)).toEqual(-0);
+    expect(ensureInteger(2e+64)).toEqual(2e+64);
+    expect(ensureInteger(Math.PI)).toEqual(3);
+    expect(ensureInteger(Number.MIN_SAFE_INTEGER)).toEqual(Number.MIN_SAFE_INTEGER);
+    expect(ensureInteger(Number.MAX_SAFE_INTEGER)).toEqual(Number.MAX_SAFE_INTEGER);
+    expect(Number.isInteger(5.0)).toBe(true);
+    expect(Number.isInteger(5.000000000000001)).toBe(false);
+    expect(Number.isInteger(5.0000000000000001)).toBe(true);
+    expect(ensureInteger(5.0)).toEqual(5);
+    expect(ensureInteger(5.000000000000001)).toEqual(5);
+    expect(ensureInteger(5.0000000000000001)).toEqual(5);
+    expect(ensureInteger('-1')).toEqual(-1);
+    expect(ensureInteger('0')).toEqual(0);
+    expect(ensureInteger('1')).toEqual(1);
+    expect(ensureInteger('')).toEqual(0);
+    expect(ensureInteger(' ')).toEqual(0);
+
+    // Returns the coerced default value.
+    expect(ensureInteger(null, '1')).toEqual(1);
+
+    // Returns the default value.
+    expect(ensureInteger(null, 1)).toEqual(1);
   });
 });
