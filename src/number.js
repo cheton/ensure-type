@@ -1,7 +1,6 @@
 const negativeZero = -0;
-const positiveZero = 0;
 
-const ensureNumber = (value, defaultValue = positiveZero) => {
+const ensureNumber = (value, defaultValue = 0) => {
   if (value === undefined || value === null) {
     return ensureNumber(defaultValue);
   }
@@ -19,8 +18,8 @@ const ensureNegativeNumber = (value, defaultValue = negativeZero) => {
   return Math.min(ensureNumber(value, defaultValue), negativeZero);
 };
 
-const ensurePositiveNumber = (value, defaultValue = positiveZero) => {
-  return Math.max(ensureNumber(value, defaultValue), positiveZero);
+const ensurePositiveNumber = (value, defaultValue = 0) => {
+  return Math.max(ensureNumber(value, defaultValue), 0);
 };
 
 const ensureFiniteNumber = (value, defaultValue = 0) => {
@@ -33,22 +32,27 @@ const ensureNegativeFiniteNumber = (value, defaultValue = negativeZero) => {
   return Math.min(ensureFiniteNumber(value, defaultValue), negativeZero);
 };
 
-const ensurePositiveFiniteNumber = (value, defaultValue = positiveZero) => {
-  return Math.max(ensureFiniteNumber(value, defaultValue), positiveZero);
+const ensurePositiveFiniteNumber = (value, defaultValue = 0) => {
+  return Math.max(ensureFiniteNumber(value, defaultValue), 0);
 };
 
-const ensureInteger = (value, defaultValue = positiveZero) => {
+const ensureInteger = (value, defaultValue = 0) => {
   value = ensureFiniteNumber(value, defaultValue);
 
-  return (value > positiveZero) ? Math.floor(value) : Math.ceil(value);
+  /**
+   * Math.trunc = function (v) {
+   *   return v < 0 ? Math.ceil(v) : Math.floor(v);
+   * };
+   */
+  return (value < 0) ? Math.ceil(value) : Math.floor(value);
 };
 
 const ensureNegativeInteger = (value, defaultValue = negativeZero) => {
   return Math.min(ensureInteger(value, defaultValue), negativeZero);
 };
 
-const ensurePositiveInteger = (value, defaultValue = positiveZero) => {
-  return Math.max(ensureInteger(value, defaultValue), positiveZero);
+const ensurePositiveInteger = (value, defaultValue = 0) => {
+  return Math.max(ensureInteger(value, defaultValue), 0);
 };
 
 export {
