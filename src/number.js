@@ -1,4 +1,7 @@
-const ensureNumber = (value, defaultValue = 0) => {
+const negativeZero = -0;
+const positiveZero = 0;
+
+const ensureNumber = (value, defaultValue = positiveZero) => {
   if (value === undefined || value === null) {
     return ensureNumber(defaultValue);
   }
@@ -12,15 +15,11 @@ const ensureNumber = (value, defaultValue = 0) => {
   return value;
 };
 
-const ensureNegativeNumber = (value, defaultValue = 0) => {
-  const negativeZero = -0;
-
+const ensureNegativeNumber = (value, defaultValue = negativeZero) => {
   return Math.min(ensureNumber(value, defaultValue), negativeZero);
 };
 
-const ensurePositiveNumber = (value, defaultValue = 0) => {
-  const positiveZero = +0;
-
+const ensurePositiveNumber = (value, defaultValue = positiveZero) => {
   return Math.max(ensureNumber(value, defaultValue), positiveZero);
 };
 
@@ -30,15 +29,11 @@ const ensureFiniteNumber = (value, defaultValue = 0) => {
   return Number.isFinite(value) ? value : ensureFiniteNumber(defaultValue);
 };
 
-const ensureNegativeFiniteNumber = (value, defaultValue = 0) => {
-  const negativeZero = -0;
-
+const ensureNegativeFiniteNumber = (value, defaultValue = negativeZero) => {
   return Math.min(ensureFiniteNumber(value, defaultValue), negativeZero);
 };
 
-const ensurePositiveFiniteNumber = (value, defaultValue = 0) => {
-  const positiveZero = +0;
-
+const ensurePositiveFiniteNumber = (value, defaultValue = positiveZero) => {
   return Math.max(ensureFiniteNumber(value, defaultValue), positiveZero);
 };
 
