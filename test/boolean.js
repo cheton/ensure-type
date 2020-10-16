@@ -24,6 +24,9 @@ describe('Boolean', () => {
     // Returns the coerced default value.
     expect(ensureBoolean(null, '')).toEqual(false);
 
+    // Returns the coerced default value.
+    expect(ensureBoolean(null, ' ')).toEqual(true);
+
     // Returns the default value.
     expect(ensureBoolean(null, true)).toEqual(true);
   });
