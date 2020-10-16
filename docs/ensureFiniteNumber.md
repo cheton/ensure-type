@@ -18,6 +18,9 @@ ensureFiniteNumber(true);
 ensureFiniteNumber(false);
 // => 0
 
+ensureFiniteNumber(-1);
+// => -1
+
 ensureFiniteNumber(0);
 // => 0
 
@@ -42,6 +45,9 @@ ensureFiniteNumber(undefined);
 ensureFiniteNumber(null);
 // => 0
 
+ensureFiniteNumber('-1');
+// => -1
+
 ensureFiniteNumber('0');
 // => 0
 
@@ -55,8 +61,8 @@ ensureFiniteNumber(' ');
 // => 0
 
 // Returns the coerced default value.
-ensureFiniteNumber(null, NaN);
-// => 0
+ensureFiniteNumber(null, '1');
+// => 1
 
 // Returns the default value.
 ensureFiniteNumber(null, 1);

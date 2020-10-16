@@ -10,13 +10,16 @@ ensureNumber();
 // => 0
 
 ensureNumber({});
-// => NaN
+// => 0
 
 ensureNumber(true);
 // => 1
 
 ensureNumber(false);
 // => 0
+
+ensureNumber(-1);
+// => -1
 
 ensureNumber(0);
 // => 0
@@ -41,6 +44,9 @@ ensureNumber(undefined);
 
 ensureNumber(null);
 // => 0
+
+ensureNumber('-1');
+// => -1
 
 ensureNumber('0');
 // => 0
