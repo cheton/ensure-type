@@ -1,4 +1,6 @@
-### `ensureNegativeInteger(value, defaultValue = 0)`
+### `ensureNegativeInteger(value, defaultValue = -1)`
+
+An integer is negative if it is less than zero.
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is an integer coercible value, the result integer is returned. Otherwise, the `defaultValue` is returned with type coercion.
@@ -7,61 +9,61 @@
 import { ensureNegativeInteger } from 'ensure-type';
 
 ensureNegativeInteger();
-// => -0
+// => -1
 
 ensureNegativeInteger(undefined);
-// => -0
+// => -1
 
 ensureNegativeInteger(null);
-// => -0
+// => -1
 
 ensureNegativeInteger(true);
-// => -0
+// => -1
 
 ensureNegativeInteger(false);
-// => -0
+// => -1
 
 ensureNegativeInteger(Infinity);
-// => -0
+// => -1
 
 ensureNegativeInteger(-Infinity);
-// => -0
+// => -1
 
 ensureNegativeInteger(NaN);
-// => -0
+// => -1
 
 ensureNegativeInteger({});
-// => -0
+// => -1
 
 ensureNegativeInteger([]);
-// => -0
+// => -1
 
 ensureNegativeInteger('');
-// => -0
+// => -1
 
 ensureNegativeInteger(' ');
-// => -0
+// => -1
 
 ensureNegativeInteger('0');
-// => -0
+// => -1
 
 ensureNegativeInteger('-0');
-// => -0
+// => -1
 
 ensureNegativeInteger('1');
-// => -0
+// => -1
 
 ensureNegativeInteger('-1');
 // => -1
 
 ensureNegativeInteger(0);
-// => -0
+// => -1
 
 ensureNegativeInteger(-0);
-// => -0
+// => -1
 
 ensureNegativeInteger(1);
-// => -0
+// => -1
 
 ensureNegativeInteger(-1);
 // => -1
@@ -79,19 +81,19 @@ ensureNegativeInteger(Number.MIN_SAFE_INTEGER);
 // => Number.MIN_SAFE_INTEGER
 
 ensureNegativeInteger(Number.MAX_SAFE_INTEGER);
-// => -0
+// => -1
 
 ensureNegativeInteger(0.2);
-// => -0
+// => -1
 
 ensureNegativeInteger(-0.2);
-// => -0
+// => -1
 
 ensureNegativeInteger(0.7);
-// => -0
+// => -1
 
 ensureNegativeInteger(-0.7);
-// => -0
+// => -1
 
 // Number.isInteger(-5.0) => true
 ensureNegativeInteger(-5.0);

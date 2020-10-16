@@ -47,12 +47,18 @@ const ensureInteger = (value, defaultValue = 0) => {
   return (value < 0) ? Math.ceil(value) : Math.floor(value);
 };
 
-const ensureNegativeInteger = (value, defaultValue = negativeZero) => {
-  return Math.min(ensureInteger(value, defaultValue), negativeZero);
+/**
+ * An integer is negative if it is less than zero.
+ */
+const ensureNegativeInteger = (value, defaultValue = -1) => {
+  return Math.min(ensureInteger(value, defaultValue), -1);
 };
 
-const ensurePositiveInteger = (value, defaultValue = 0) => {
-  return Math.max(ensureInteger(value, defaultValue), 0);
+/**
+ * An integer is positive if it is greater than zero.
+ */
+const ensurePositiveInteger = (value, defaultValue = 1) => {
+  return Math.max(ensureInteger(value, defaultValue), 1);
 };
 
 export {
