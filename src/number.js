@@ -1,4 +1,9 @@
-const negativeZero = -0;
+/**
+ * The trunc() function returns the integer part of a number by removing any fractional digits.
+ */
+const trunc = (v) => {
+  return (v < 0) ? Math.ceil(v) : Math.floor(v);
+};
 
 const ensureNumber = (value, defaultValue = 0) => {
   if (value === undefined || value === null) {
@@ -14,8 +19,8 @@ const ensureNumber = (value, defaultValue = 0) => {
   return value;
 };
 
-const ensureNegativeNumber = (value, defaultValue = negativeZero) => {
-  return Math.min(ensureNumber(value, defaultValue), negativeZero);
+const ensureNegativeNumber = (value, defaultValue = -0) => {
+  return Math.min(ensureNumber(value, defaultValue), -0);
 };
 
 const ensurePositiveNumber = (value, defaultValue = 0) => {
@@ -28,8 +33,8 @@ const ensureFiniteNumber = (value, defaultValue = 0) => {
   return Number.isFinite(value) ? value : ensureFiniteNumber(defaultValue);
 };
 
-const ensureNegativeFiniteNumber = (value, defaultValue = negativeZero) => {
-  return Math.min(ensureFiniteNumber(value, defaultValue), negativeZero);
+const ensureNegativeFiniteNumber = (value, defaultValue = -0) => {
+  return Math.min(ensureFiniteNumber(value, defaultValue), -0);
 };
 
 const ensurePositiveFiniteNumber = (value, defaultValue = 0) => {
@@ -39,12 +44,7 @@ const ensurePositiveFiniteNumber = (value, defaultValue = 0) => {
 const ensureInteger = (value, defaultValue = 0) => {
   value = ensureFiniteNumber(value, defaultValue);
 
-  /**
-   * Math.trunc = function (v) {
-   *   return v < 0 ? Math.ceil(v) : Math.floor(v);
-   * };
-   */
-  return (value < 0) ? Math.ceil(value) : Math.floor(value);
+  return trunc(value);
 };
 
 /**
