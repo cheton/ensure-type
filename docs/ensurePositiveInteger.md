@@ -3,7 +3,7 @@
 An integer is positive if it is greater than zero.
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
-* If given `value` is an integer coercible value, the result integer is returned. Otherwise, the `defaultValue` is returned with type coercion.
+* If given `value` is an integer coercible value, the result value is returned. Otherwise, the `defaultValue` is returned with type coercion.
 
 ```js
 import { ensurePositiveInteger } from 'ensure-type';
