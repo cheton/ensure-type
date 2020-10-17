@@ -61,6 +61,20 @@ const ensurePositiveInteger = (value, defaultValue = 1) => {
   return Math.max(ensureInteger(value, defaultValue), 1);
 };
 
+/**
+ * A non-negative integer is an integer that is either zero or positive.
+ */
+const ensureNonNegativeInteger = (value, defaultValue = 0) => {
+  return Math.max(ensureInteger(value, defaultValue), 0);
+};
+
+/**
+ * A non-positive integer is an integer that is either zero or negative.
+ */
+const ensureNonPositiveInteger = (value, defaultValue = -0) => {
+  return Math.min(ensureInteger(value, defaultValue), -0);
+};
+
 export {
   ensureNumber,
   ensureNegativeNumber,
@@ -71,4 +85,6 @@ export {
   ensureInteger,
   ensureNegativeInteger,
   ensurePositiveInteger,
+  ensureNonNegativeInteger,
+  ensureNonPositiveInteger,
 };
