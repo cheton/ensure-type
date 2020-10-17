@@ -1,4 +1,4 @@
-### `ensureArray(value, defaultValue = [])`
+### `ensureArray(value, [defaultValue=[]])`
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is an array, it is returned back. Otherwise, returns a new array containing the value.

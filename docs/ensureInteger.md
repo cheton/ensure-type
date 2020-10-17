@@ -1,4 +1,4 @@
-### `ensureInteger(value, defaultValue = 0)`
+### `ensureInteger(value, [defaultValue=0])`
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is an integer coercible value, the result integer is returned. Otherwise, the `defaultValue` is returned with type coercion.

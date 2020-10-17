@@ -1,4 +1,4 @@
-### `ensureNegativeFiniteNumber(value, defaultValue = -0)`
+### `ensureNegativeFiniteNumber(value, [defaultValue=-0])`
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is a finite number coercible value, the result number is returned. Otherwise, the `defaultValue` is returned with type coercion.

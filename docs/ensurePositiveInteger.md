@@ -1,4 +1,4 @@
-### `ensurePositiveInteger(value, defaultValue = 1)`
+### `ensurePositiveInteger(value, [defaultValue=1])`
 
 An integer is positive if it is greater than zero.
 

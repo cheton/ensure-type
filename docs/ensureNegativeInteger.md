@@ -1,4 +1,4 @@
-### `ensureNegativeInteger(value, defaultValue = -1)`
+### `ensureNegativeInteger(value, [defaultValue=-1])`
 
 An integer is negative if it is less than zero.
 
