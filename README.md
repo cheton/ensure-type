@@ -30,6 +30,9 @@ ensureArray(['apple', 'banana']);
 ### Array
 - [`ensureArray`](docs/ensureArray.md)
 
+### BigInt
+- [`ensureBigInt`](docs/ensureBigInt.md)
+
 ### Boolean
 - [`ensureBoolean`](docs/ensureBoolean.md)
 
