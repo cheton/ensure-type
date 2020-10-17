@@ -1,4 +1,4 @@
-### `ensurePlainObject(value, defaultValue = {})`
+### `ensurePlainObject(value, [defaultValue={}])`
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is a plain object, it is returned back. Otherwise, the `defaultValue` is returned with type coercion.

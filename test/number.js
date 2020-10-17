@@ -5,9 +5,10 @@ import {
   ensureFiniteNumber,
   ensureNegativeFiniteNumber,
   ensurePositiveFiniteNumber,
+  ensureInteger,
+  ensureNegativeInteger,
+  ensurePositiveInteger,
 } from '../src';
-
-const negativeZero = -0;
 
 describe('Number', () => {
   test('ensureNumber', () => {
@@ -38,24 +39,24 @@ describe('Number', () => {
   });
 
   test('ensureNegativeNumber', () => {
-    expect(ensureNegativeNumber()).toEqual(negativeZero);
-    expect(ensureNegativeNumber({})).toEqual(negativeZero);
-    expect(ensureNegativeNumber(true)).toEqual(negativeZero);
-    expect(ensureNegativeNumber(false)).toEqual(negativeZero);
+    expect(ensureNegativeNumber()).toEqual(-0);
+    expect(ensureNegativeNumber({})).toEqual(-0);
+    expect(ensureNegativeNumber(true)).toEqual(-0);
+    expect(ensureNegativeNumber(false)).toEqual(-0);
     expect(ensureNegativeNumber(-1)).toEqual(-1);
-    expect(ensureNegativeNumber(0)).toEqual(negativeZero);
-    expect(ensureNegativeNumber(1)).toEqual(negativeZero);
-    expect(ensureNegativeNumber(2e+64)).toEqual(negativeZero);
-    expect(ensureNegativeNumber(Infinity)).toEqual(negativeZero);
+    expect(ensureNegativeNumber(0)).toEqual(-0);
+    expect(ensureNegativeNumber(1)).toEqual(-0);
+    expect(ensureNegativeNumber(2e+64)).toEqual(-0);
+    expect(ensureNegativeNumber(Infinity)).toEqual(-0);
     expect(ensureNegativeNumber(-Infinity)).toEqual(-Infinity);
-    expect(ensureNegativeNumber(NaN)).toEqual(negativeZero);
-    expect(ensureNegativeNumber(undefined)).toEqual(negativeZero);
-    expect(ensureNegativeNumber(null)).toEqual(negativeZero);
+    expect(ensureNegativeNumber(NaN)).toEqual(-0);
+    expect(ensureNegativeNumber(undefined)).toEqual(-0);
+    expect(ensureNegativeNumber(null)).toEqual(-0);
     expect(ensureNegativeNumber('-1')).toEqual(-1);
-    expect(ensureNegativeNumber('0')).toEqual(negativeZero);
-    expect(ensureNegativeNumber('1')).toEqual(negativeZero);
-    expect(ensureNegativeNumber('')).toEqual(negativeZero);
-    expect(ensureNegativeNumber(' ')).toEqual(negativeZero);
+    expect(ensureNegativeNumber('0')).toEqual(-0);
+    expect(ensureNegativeNumber('1')).toEqual(-0);
+    expect(ensureNegativeNumber('')).toEqual(-0);
+    expect(ensureNegativeNumber(' ')).toEqual(-0);
 
     // Returns the coerced default value.
     expect(ensureNegativeNumber(null, '-1')).toEqual(-1);
@@ -119,24 +120,24 @@ describe('Number', () => {
   });
 
   test('ensureNegativeFiniteNumber', () => {
-    expect(ensureNegativeFiniteNumber()).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber({})).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(true)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(false)).toEqual(negativeZero);
+    expect(ensureNegativeFiniteNumber()).toEqual(-0);
+    expect(ensureNegativeFiniteNumber({})).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(true)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(false)).toEqual(-0);
     expect(ensureNegativeFiniteNumber(-1)).toEqual(-1);
-    expect(ensureNegativeFiniteNumber(0)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(1)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(2e+64)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(Infinity)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(-Infinity)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(NaN)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(undefined)).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(null)).toEqual(negativeZero);
+    expect(ensureNegativeFiniteNumber(0)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(1)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(2e+64)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(Infinity)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(-Infinity)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(NaN)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(undefined)).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(null)).toEqual(-0);
     expect(ensureNegativeFiniteNumber('-1')).toEqual(-1);
-    expect(ensureNegativeFiniteNumber('0')).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber('1')).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber('')).toEqual(negativeZero);
-    expect(ensureNegativeFiniteNumber(' ')).toEqual(negativeZero);
+    expect(ensureNegativeFiniteNumber('0')).toEqual(-0);
+    expect(ensureNegativeFiniteNumber('1')).toEqual(-0);
+    expect(ensureNegativeFiniteNumber('')).toEqual(-0);
+    expect(ensureNegativeFiniteNumber(' ')).toEqual(-0);
 
     // Returns the coerced default value.
     expect(ensureNegativeFiniteNumber(null, '-1')).toEqual(-1);
@@ -170,5 +171,139 @@ describe('Number', () => {
 
     // Returns the default value.
     expect(ensurePositiveFiniteNumber(null, 1)).toEqual(1);
+  });
+
+  test('ensureInteger', () => {
+    expect(ensureInteger()).toEqual(0);
+    expect(ensureInteger(undefined)).toEqual(0);
+    expect(ensureInteger(null)).toEqual(0);
+    expect(ensureInteger(true)).toEqual(1);
+    expect(ensureInteger(false)).toEqual(0);
+    expect(ensureInteger(Infinity)).toEqual(0);
+    expect(ensureInteger(-Infinity)).toEqual(0);
+    expect(ensureInteger(NaN)).toEqual(0);
+    expect(ensureInteger({})).toEqual(0);
+    expect(ensureInteger([])).toEqual(0);
+    expect(ensureInteger('')).toEqual(0);
+    expect(ensureInteger(' ')).toEqual(0);
+    expect(ensureInteger('0')).toEqual(0);
+    expect(ensureInteger('-0')).toEqual(-0);
+    expect(ensureInteger('1')).toEqual(1);
+    expect(ensureInteger('-1')).toEqual(-1);
+    expect(ensureInteger(0)).toEqual(0);
+    expect(ensureInteger(-0)).toEqual(-0);
+    expect(ensureInteger(1)).toEqual(1);
+    expect(ensureInteger(-1)).toEqual(-1);
+    expect(ensureInteger(99999999999999999999999)).toEqual(99999999999999999999999);
+    expect(ensureInteger(2e+64)).toEqual(2e+64);
+    expect(ensureInteger(Math.PI)).toEqual(3);
+    expect(ensureInteger(Number.MIN_SAFE_INTEGER)).toEqual(Number.MIN_SAFE_INTEGER);
+    expect(ensureInteger(Number.MAX_SAFE_INTEGER)).toEqual(Number.MAX_SAFE_INTEGER);
+    expect(ensureInteger(0.2)).toEqual(0);
+    expect(ensureInteger(-0.2)).toEqual(-0);
+    expect(ensureInteger(0.7)).toEqual(0);
+    expect(ensureInteger(-0.7)).toEqual(-0);
+    expect(Number.isInteger(5.0)).toBe(true);
+    expect(Number.isInteger(5.000000000000001)).toBe(false);
+    expect(Number.isInteger(5.0000000000000001)).toBe(true);
+    expect(ensureInteger(5.0)).toEqual(5);
+    expect(ensureInteger(5.000000000000001)).toEqual(5);
+    expect(ensureInteger(5.0000000000000001)).toEqual(5);
+
+    // Returns the coerced default value.
+    expect(ensureInteger(null, '1')).toEqual(1);
+    expect(ensureInteger(null, '-1')).toEqual(-1);
+
+    // Returns the default value.
+    expect(ensureInteger(null, 1)).toEqual(1);
+    expect(ensureInteger(null, -1)).toEqual(-1);
+  });
+
+  test('ensureNegativeInteger', () => {
+    expect(ensureNegativeInteger()).toEqual(-1);
+    expect(ensureNegativeInteger(undefined)).toEqual(-1);
+    expect(ensureNegativeInteger(null)).toEqual(-1);
+    expect(ensureNegativeInteger(true)).toEqual(-1);
+    expect(ensureNegativeInteger(false)).toEqual(-1);
+    expect(ensureNegativeInteger(Infinity)).toEqual(-1);
+    expect(ensureNegativeInteger(-Infinity)).toEqual(-1);
+    expect(ensureNegativeInteger(NaN)).toEqual(-1);
+    expect(ensureNegativeInteger({})).toEqual(-1);
+    expect(ensureNegativeInteger([])).toEqual(-1);
+    expect(ensureNegativeInteger('')).toEqual(-1);
+    expect(ensureNegativeInteger(' ')).toEqual(-1);
+    expect(ensureNegativeInteger('0')).toEqual(-1);
+    expect(ensureNegativeInteger('-0')).toEqual(-1);
+    expect(ensureNegativeInteger('1')).toEqual(-1);
+    expect(ensureNegativeInteger('-1')).toEqual(-1);
+    expect(ensureNegativeInteger(0)).toEqual(-1);
+    expect(ensureNegativeInteger(-0)).toEqual(-1);
+    expect(ensureNegativeInteger(1)).toEqual(-1);
+    expect(ensureNegativeInteger(-1)).toEqual(-1);
+    expect(ensureNegativeInteger(-99999999999999999999999)).toEqual(-99999999999999999999999);
+    expect(ensureNegativeInteger(-2e+64)).toEqual(-2e+64);
+    expect(ensureNegativeInteger(-Math.PI)).toEqual(-3);
+    expect(ensureNegativeInteger(Number.MIN_SAFE_INTEGER)).toEqual(Number.MIN_SAFE_INTEGER);
+    expect(ensureNegativeInteger(Number.MAX_SAFE_INTEGER)).toEqual(-1);
+    expect(ensureNegativeInteger(0.2)).toEqual(-1);
+    expect(ensureNegativeInteger(-0.2)).toEqual(-1);
+    expect(ensureNegativeInteger(0.7)).toEqual(-1);
+    expect(ensureNegativeInteger(-0.7)).toEqual(-1);
+    expect(Number.isInteger(-5.0)).toBe(true);
+    expect(Number.isInteger(-5.000000000000001)).toBe(false);
+    expect(Number.isInteger(-5.0000000000000001)).toBe(true);
+    expect(ensureNegativeInteger(-5.0)).toEqual(-5);
+    expect(ensureNegativeInteger(-5.000000000000001)).toEqual(-5);
+    expect(ensureNegativeInteger(-5.0000000000000001)).toEqual(-5);
+
+    // Returns the coerced default value.
+    expect(ensureNegativeInteger(null, '-1')).toEqual(-1);
+
+    // Returns the default value.
+    expect(ensureNegativeInteger(null, -1)).toEqual(-1);
+  });
+
+  test('ensurePositiveInteger', () => {
+    expect(ensurePositiveInteger()).toEqual(1);
+    expect(ensurePositiveInteger(undefined)).toEqual(1);
+    expect(ensurePositiveInteger(null)).toEqual(1);
+    expect(ensurePositiveInteger(true)).toEqual(1);
+    expect(ensurePositiveInteger(false)).toEqual(1);
+    expect(ensurePositiveInteger(Infinity)).toEqual(1);
+    expect(ensurePositiveInteger(-Infinity)).toEqual(1);
+    expect(ensurePositiveInteger(NaN)).toEqual(1);
+    expect(ensurePositiveInteger({})).toEqual(1);
+    expect(ensurePositiveInteger([])).toEqual(1);
+    expect(ensurePositiveInteger('')).toEqual(1);
+    expect(ensurePositiveInteger(' ')).toEqual(1);
+    expect(ensurePositiveInteger('0')).toEqual(1);
+    expect(ensurePositiveInteger('-0')).toEqual(1);
+    expect(ensurePositiveInteger('1')).toEqual(1);
+    expect(ensurePositiveInteger('-1')).toEqual(1);
+    expect(ensurePositiveInteger(0)).toEqual(1);
+    expect(ensurePositiveInteger(-0)).toEqual(1);
+    expect(ensurePositiveInteger(1)).toEqual(1);
+    expect(ensurePositiveInteger(-1)).toEqual(1);
+    expect(ensurePositiveInteger(99999999999999999999999)).toEqual(99999999999999999999999);
+    expect(ensurePositiveInteger(2e+64)).toEqual(2e+64);
+    expect(ensurePositiveInteger(Math.PI)).toEqual(3);
+    expect(ensurePositiveInteger(Number.MIN_SAFE_INTEGER)).toEqual(1);
+    expect(ensurePositiveInteger(Number.MAX_SAFE_INTEGER)).toEqual(Number.MAX_SAFE_INTEGER);
+    expect(ensurePositiveInteger(0.2)).toEqual(1);
+    expect(ensurePositiveInteger(-0.2)).toEqual(1);
+    expect(ensurePositiveInteger(0.7)).toEqual(1);
+    expect(ensurePositiveInteger(-0.7)).toEqual(1);
+    expect(Number.isInteger(5.0)).toBe(true);
+    expect(Number.isInteger(5.000000000000001)).toBe(false);
+    expect(Number.isInteger(5.0000000000000001)).toBe(true);
+    expect(ensurePositiveInteger(5.0)).toEqual(5);
+    expect(ensurePositiveInteger(5.000000000000001)).toEqual(5);
+    expect(ensurePositiveInteger(5.0000000000000001)).toEqual(5);
+
+    // Returns the coerced default value.
+    expect(ensurePositiveInteger(null, '1')).toEqual(1);
+
+    // Returns the default value.
+    expect(ensurePositiveInteger(null, 1)).toEqual(1);
   });
 });

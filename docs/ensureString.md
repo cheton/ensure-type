@@ -1,4 +1,4 @@
-### `ensureString(value, defaultValue = '')`
+### `ensureString(value, [defaultValue=''])`
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is a string, it is returned back. Otherwise, returns the coerced value.

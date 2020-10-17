@@ -1,7 +1,11 @@
-const negativeZero = -0;
-const positiveZero = 0;
+/**
+ * The trunc() function returns the integer part of a number by removing any fractional digits.
+ */
+const trunc = (v) => {
+  return (v < 0) ? Math.ceil(v) : Math.floor(v);
+};
 
-const ensureNumber = (value, defaultValue = positiveZero) => {
+const ensureNumber = (value, defaultValue = 0) => {
   if (value === undefined || value === null) {
     return ensureNumber(defaultValue);
   }
@@ -15,12 +19,12 @@ const ensureNumber = (value, defaultValue = positiveZero) => {
   return value;
 };
 
-const ensureNegativeNumber = (value, defaultValue = negativeZero) => {
-  return Math.min(ensureNumber(value, defaultValue), negativeZero);
+const ensureNegativeNumber = (value, defaultValue = -0) => {
+  return Math.min(ensureNumber(value, defaultValue), -0);
 };
 
-const ensurePositiveNumber = (value, defaultValue = positiveZero) => {
-  return Math.max(ensureNumber(value, defaultValue), positiveZero);
+const ensurePositiveNumber = (value, defaultValue = 0) => {
+  return Math.max(ensureNumber(value, defaultValue), 0);
 };
 
 const ensureFiniteNumber = (value, defaultValue = 0) => {
@@ -29,12 +33,32 @@ const ensureFiniteNumber = (value, defaultValue = 0) => {
   return Number.isFinite(value) ? value : ensureFiniteNumber(defaultValue);
 };
 
-const ensureNegativeFiniteNumber = (value, defaultValue = negativeZero) => {
-  return Math.min(ensureFiniteNumber(value, defaultValue), negativeZero);
+const ensureNegativeFiniteNumber = (value, defaultValue = -0) => {
+  return Math.min(ensureFiniteNumber(value, defaultValue), -0);
 };
 
-const ensurePositiveFiniteNumber = (value, defaultValue = positiveZero) => {
-  return Math.max(ensureFiniteNumber(value, defaultValue), positiveZero);
+const ensurePositiveFiniteNumber = (value, defaultValue = 0) => {
+  return Math.max(ensureFiniteNumber(value, defaultValue), 0);
+};
+
+const ensureInteger = (value, defaultValue = 0) => {
+  value = ensureFiniteNumber(value, defaultValue);
+
+  return trunc(value);
+};
+
+/**
+ * An integer is negative if it is less than zero.
+ */
+const ensureNegativeInteger = (value, defaultValue = -1) => {
+  return Math.min(ensureInteger(value, defaultValue), -1);
+};
+
+/**
+ * An integer is positive if it is greater than zero.
+ */
+const ensurePositiveInteger = (value, defaultValue = 1) => {
+  return Math.max(ensureInteger(value, defaultValue), 1);
 };
 
 export {
@@ -44,4 +68,7 @@ export {
   ensureFiniteNumber,
   ensureNegativeFiniteNumber,
   ensurePositiveFiniteNumber,
+  ensureInteger,
+  ensureNegativeInteger,
+  ensurePositiveInteger,
 };

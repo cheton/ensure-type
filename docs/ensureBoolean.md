@@ -1,4 +1,4 @@
-### `ensureBoolean(value, defaultValue = false)`
+### `ensureBoolean(value, [defaultValue=false])`
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is a boolean, it is returned back. Otherwise, returns the coerced value.
