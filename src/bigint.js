@@ -1,4 +1,10 @@
-const ensureBigInt = (value, defaultValue = 0n) => {
+const ensureBigInt = (value, defaultValue) => {
+  if (!(typeof BigInt === 'function' && typeof BigInt(0) === 'bigint')) {
+    throw new Error('BigInt is not defined');
+  }
+
+  defaultValue = defaultValue ?? BigInt(0);
+
   if (value === undefined || value === null) {
     return ensureBigInt(defaultValue);
   }
