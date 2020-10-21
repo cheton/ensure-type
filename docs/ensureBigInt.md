@@ -1,4 +1,4 @@
-### `ensureBigInt(value, [defaultValue=0])`
+### `ensureBigInt(value, [defaultValue=0n])`
 
 * If given `value` is `undefined` or `null`, the `defaultValue` is returned with type coercion.
 * If given `value` is a big integer coercible value, the result value is returned. Otherwise, the `defaultValue` is returned with type coercion.
