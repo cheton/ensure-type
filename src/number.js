@@ -30,7 +30,12 @@ const ensurePositiveNumber = (value, defaultValue = 0) => {
 const ensureFiniteNumber = (value, defaultValue = 0) => {
   value = ensureNumber(value, defaultValue);
 
-  return Number.isFinite(value) ? value : ensureFiniteNumber(defaultValue);
+  // Determines whether the passed value is a finite number
+  if (typeof value === 'number' && isFinite(value)) {
+    return value;
+  }
+
+  return ensureFiniteNumber(defaultValue);
 };
 
 const ensureNegativeFiniteNumber = (value, defaultValue = -0) => {
