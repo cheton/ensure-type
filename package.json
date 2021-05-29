@@ -1,6 +1,6 @@
 {
   "name": "ensure-type",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Ensure runtime type safety and perform type coercion if needed.",
   "homepage": "https://github.com/cheton/ensure-type",
   "main": "dist/cjs/index.js",
