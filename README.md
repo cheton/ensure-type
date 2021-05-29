@@ -36,6 +36,9 @@ ensureArray(['apple', 'banana']);
 ### Boolean
 - [`ensureBoolean`](docs/ensureBoolean.md)
 
+### Function
+- [`ensureFunction`](docs/ensureFunction.md)
+
 ### Number
 - [`ensureNumber`](docs/ensureNumber.md)
 - [`ensureNegativeNumber`](docs/ensureNegativeNumber.md)
