@@ -1,9 +1,14 @@
 version: 2.1
 
+workflows:
+  build-and-test:
+    jobs:
+      - build-and-test
+
 jobs:
-  build:
+  build-and-test:
     docker:
-      - image: cimg/node:12.22
+      - image: cimg/node:15.1
     steps:
       - run:
           name: Configuration
