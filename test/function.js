@@ -24,8 +24,10 @@ describe('Function', () => {
 
     // Returns the coerced default value.
     expect(ensureFunction(null, null)).toBeInstanceOf(Function);
+    expect(ensureFunction(null, null).toString()).toEqual('function () {}');
 
     // Returns the default value.
     expect(ensureFunction(null, defaultFunction)).toEqual(defaultFunction);
+    expect(ensureFunction(null, defaultFunction).toString()).toEqual('function defaultFunction() {}');
   });
 });
