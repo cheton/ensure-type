@@ -10,7 +10,6 @@
     "dist/esm/*.js"
   ],
   "scripts": {
-    "prepublish": "npm run build && npm test",
     "build": "rollup --config rollup.config.js",
     "clean": "del coverage dist yarn.lock",
     "test": "jest",
